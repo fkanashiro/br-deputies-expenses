@@ -8,5 +8,10 @@ def download_expenses():
 
     for i in range(starting_year, current_year + 1):
         print(base_url.format(year = i))
+        download_response = requests.get(base_url.format(year = i), stream=True)
+        
+        with open('Ano-{year}.csv.zip'.format(year = i), 'wb') as csv_file:
+            for chunk in download_response.iter_content(chunk_size=8192):
+                csv_file.write(chunk)
     
 download_expenses()
