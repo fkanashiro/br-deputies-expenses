@@ -24,4 +24,5 @@ def download_expenses():
         else:
             print(f"Download error: {response.status_code} - {response.text}")
     
-download_expenses()
+if __name__ == '__main__':
+    download_expenses()
